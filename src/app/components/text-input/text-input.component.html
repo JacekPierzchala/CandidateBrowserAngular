@@ -1,0 +1,33 @@
+
+<div class="form-group pt-1">
+    <div class="input-field" style="min-height: 50px;">
+        <span *ngIf="picture" class="fa {{picture}} mx-2"></span>
+        <input type="{{type}}" 
+        [formControl]="control"
+        [class.is-invalid]="control.touched && control.invalid"
+        placeholder="{{label}}">
+        <div class="invalid-feedback" *ngIf="control.errors?.['required']">
+            Please enter {{label}}
+        </div>
+        <div class="invalid-feedback" *ngIf="control.errors?.['email']">
+            Please enter valid email
+        </div>
+        <div class="invalid-feedback" *ngIf="control.errors?.['minlength']">
+            {{label}} must have {{control.errors?.['minlength'].requiredLength}} characters at least
+        </div>
+        <div class="invalid-feedback" *ngIf="control.errors?.['maxlength']">
+            Password must have {{control.errors?.['maxlength'].requiredLength}} characters at most
+        </div>
+        <div class="invalid-feedback" *ngIf="control.errors?.['notMatching']">
+            Password do not match
+        </div>
+        <div class="invalid-feedback" *ngIf="control.errors?.['passwordStrength']">
+            The password does not meet complexity requirements
+        </div>
+        <span *ngIf="label=='Password' || label=='Confirm Password'" (click)="hideShowPassword()"  class="fa {{eyeIcon}} me-1"></span>
+    </div>
+
+</div>
+
+
+

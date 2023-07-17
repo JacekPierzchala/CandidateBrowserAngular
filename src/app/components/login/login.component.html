@@ -1,0 +1,30 @@
+<div class="outer">
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+                <div class="panel border bg-white">
+                    <div class="panel-heading">
+                        <h3 class="pt-3 font-weight-bold">Candidates Browser</h3>
+                    </div>
+                    <div class="panel-body p-3">
+                        <form  [formGroup]="loginForm" autocomplete="off">                  
+                             <app-text-input [picture]="'fa-user'"  [formControl]="$any(loginForm.controls['email'])" [type]="'text'" [label]="'Email Adress'"></app-text-input>                           
+                             <app-text-input  [picture]="'fa-lock'"  [formControl]="$any(loginForm.controls['password'])" [type]="'password'" [label]="'Password'">
+                             </app-text-input>
+                                            
+                            <button (click)="onLogin()" [disabled]="loginForm.invalid" type="submit" class="btn btn-primary btn-block mt-4 w-100">Login</button>
+                            <div class="text-center pt-4 text-muted">Don't have account? <a id="forget" routerLink="/register">Register</a> </div>
+                        </form>
+                    </div>
+                    <div class="mx-3 my-2 py-2 bordert">
+                        <div class="text-center py-3">
+                            <a href="www.google.com" target="_blank" class="px-2" >
+                                <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png" alt="">
+                             </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

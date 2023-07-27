@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl:'https://candidatebrowsercleanarchapi.azurewebsites.net/api'
+  //apiUrl:'https://localhost:7201/api'
 };
 
 /*

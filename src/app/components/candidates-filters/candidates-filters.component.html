@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="row">
+            <button (click)="applyFilters()" style="width: 200px;" class="btn btn-primary">
+                <span class="fa fa-search"></span> Apply Filters
+            </button>
+            <button (click)="resetFilters()" style="width: 200px;" class="btn btn-warning mb-1">
+                <span class="fa fa-times"></span> Reset Filters
+            </button>
+            <hr>
+            <div style="border-radius:6px;"  class="row bg-primary mt-1 mb-1">
+                <div class="col-auto ">
+                  <label style="color: white; width:80px" class="col-form-label ">First Name:</label>
+                </div>
+                <div class="col-auto">
+                  <input type="text" [(ngModel)]="candidatesFilters!.firstName"  class="form-control mt-1 mb-1" >
+                </div>
+              </div>
+              <div style="border-radius:6px;"   class="row  bg-primary mt-1 mb-1">
+                <div class="col-auto ">
+                  <label  style="color: white; width:80px"  class="col-form-label ">Last Name:</label>
+                </div>
+                <div class="col-auto">
+                  <input type="text" [(ngModel)]="candidatesFilters!.lastName"    class="form-control mt-1 mb-1 ">
+                </div>
+              </div>
+              <div  style="border-radius:6px;"   class="row  bg-primary mt-1 mb-2">
+                <label style="color: white; width:80px"    class="col-form-label ">Companies:</label>
+                <select class="form-select mb-2" multiple  [(ngModel)]="candidatesFilters!.companies" >
+                  <option *ngFor="let company of companies" [value]="company.id">
+                    {{company.companyName}}
+                </option>
+                </select>
+              </div>
+              <div  style="border-radius:6px;"   class="row  bg-primary mt-1 mb-2">
+                <label style="color: white; width:80px"    class="col-form-label ">Projects:</label>
+                <select class="form-select mb-2" multiple  [(ngModel)]="candidatesFilters!.projects" >
+                  <option *ngFor="let project of projects" [value]="project.id">
+                    {{project.projectName}}
+                </option>
+                </select>
+              </div>
+    </div>
+
+</div>

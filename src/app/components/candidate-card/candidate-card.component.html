@@ -1,0 +1,29 @@
+<div class="card " style="width: 330px; height: 320px;" *ngIf="candidate">
+    <div class="card-header">
+        <div class="container-fluid"><span > <b>{{candidate.firstName}} {{candidate.lastName}}</b></span></div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col">
+                <div class="card-img-wrapper">      
+                    <img class="img-candidate-list mt-1 ms-1" src="{{candidate.profilePath || './assets/img_templates/avatar.png'}}" > 
+                 </div>
+            </div>
+
+             <div class="col">
+                <span style="font-size: small;"><b>COMPANIES:</b></span>
+                <div  *ngFor="let candidateCompany of candidate.companies">
+                    <span style="font-size: small;">{{candidateCompany.company.companyName}}</span>
+                </div>
+                <hr>
+                <span  style="font-size: small;"><b>PROJECTS:</b></span>
+                <div *ngFor="let candidateProject of candidate.projects">
+                    <span style="font-size: small;">{{candidateProject.project.projectName}}</span>
+                </div>
+             </div>
+        </div>
+
+    </div>
+
+
+</div>

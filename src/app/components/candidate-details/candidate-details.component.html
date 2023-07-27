@@ -1,0 +1,60 @@
+<div class="row"  *ngIf="candidate && candidate!.id!>0">
+    <div class="col-5 mt-1" style="min-width: 350px;">
+        <div class="card">
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6 card-img-wrapper">
+                        <img src="{{candidate.profilePath || './assets/img_templates/avatar.png'}}" 
+                         class="img-candidate-details">
+                    </div>
+                    <div class="col-6 ms-1">               
+                        <strong>Candidate:</strong>
+                        <p>{{candidate.firstName}} {{candidate.lastName}}</p>
+                        <strong>Date of Birth:</strong>
+                        <p>{{candidate.dateOfBirth}}</p>
+                        <strong>Email:</strong>
+                        <p>{{candidate.email}}</p>
+                    </div>
+                </div>
+                <div class="row mt-1">
+                    <strong>Description:</strong>
+                    <p>{{candidate.description}}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div style="min-width: 350px;" class="col-4 mt-1">  
+        <div class="card">
+            <div class="card-body">             
+                <strong>Companies:</strong>
+                <ul class="timeline align-items-start mt-2 " *ngFor="let company of candidate.companies">
+                    <li>
+                        <p>{{company.company.companyName}}: {{company.position}}</p>
+                        <p>{{company.dateStart | date : 'yyyy-MM-dd'}} : {{company.dateEnd | date : 'yyyy-MM-dd'}}</p>
+                    </li>
+                </ul>
+           
+            </div>
+ 
+        </div>
+    </div>
+    <div class="col-3 mt-1" style="min-width: 350px;">  
+        <div class="card">
+            <div class="card-body">            
+            <strong>Projects:</strong>
+            <ul class="timeline align-items-start mt-2 " *ngFor="let project of candidate.projects">
+                <li>
+                    <p>{{project.project.projectName}}</p>
+                </li>
+            </ul>
+           
+            </div>
+ 
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="candidate?.id==0">
+    <app-not-found></app-not-found>
+</div>

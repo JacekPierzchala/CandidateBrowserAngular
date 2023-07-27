@@ -16,9 +16,7 @@ export class LoginComponent implements OnInit {
   loginForm!:FormGroup;
 
   constructor(private fb:FormBuilder, private auth:AuthserviceService,
-    private router:Router,private toastr: ToastrService) 
-{ 
-
+    private router:Router,private toastr: ToastrService) { 
   }
 
   ngOnInit(): void {
@@ -28,28 +26,33 @@ export class LoginComponent implements OnInit {
     })
   }
   
+  handleGoogleLogin(){
+    let url:string=''
+    this.auth.getGoogleAuthUrl().subscribe({
+      next:response=>{
+        url =response.data;
+        window.location.href=url;
+      }
+      })
+
+    }
+
+  
 
   onLogin(){
     if(this.loginForm.valid){
-
       this.auth.login(this.loginForm.value).subscribe({
         next:(res)=>{
           this.loginForm.reset();
-          this.auth.storeToken(res.token)
+          this.auth.storeToken(res)
           this.toastr.success("Authorization succeeded")
           this.router.navigate(['candidates'])
         },
         error:(errorResponse)=>{
-          // this.toastr.error({detail:"Error", summary:err, duration:5000})
-          this.toastr.error('Authorization failed: ' + errorResponse?.error?.ErrorMessage)
-          // console.log(errorResponse.error.ErrorMessage);
-          
+          this.toastr.error('Authorization failed: ' + errorResponse?.error?.ErrorMessage)         
         }
       })
     }
-    // else{
-    //   this.validateAllFormFields(this.loginForm);
-    // }
   }
 
 

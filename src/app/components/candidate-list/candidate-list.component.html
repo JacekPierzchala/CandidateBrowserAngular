@@ -1,0 +1,21 @@
+
+    <div class="text-center " *ngIf="candidates">
+        <h2>{{pagination?.totalItems}} Records Found</h2>
+    </div>
+
+<div class="row mt-3 ms-2">
+    <div class="col mb-2"  *ngFor="let candidate of candidates">    
+<app-candidate-card  style="cursor: pointer;" routerLink="/candidates/{{candidate.id}}" [candidate]="candidate"></app-candidate-card>
+   </div>
+   <div class="d-flex justify-content-center" *ngIf="candidates && candidates.length>0 && pagination" >
+        <pagination [boundaryLinks]="true" 
+                [totalItems]="pagination.totalItems!"
+                [itemsPerPage]="pagination.itemsPerPage!"
+                [(ngModel)]="pagination!.currentPage"
+                (pageChanged)="pageChanged($event)"
+                previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+        
+        </pagination>
+    </div>
+</div> 
+

@@ -1,1 +1,22 @@
-<p>candidates works!</p>
+<div *ngIf="userStore.hasPermission('Candidate.Read')">
+    <button class="btn btn-primary " type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+        <span class="fa fa-eye"></span>
+        Show Filters
+      </button> 
+      <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="staticBackdropLabel">Candidates search filters</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <app-candidates-filters></app-candidates-filters>
+          <!-- <div>
+            I will not close if you click outside of me.
+          </div> -->
+        </div>
+      </div>   
+    <app-candidate-list></app-candidate-list>
+</div>
+<div *ngIf="!userStore.hasPermission('Candidate.Read')">
+    <app-access-denied></app-access-denied>
+</div>

@@ -53,6 +53,15 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  handleGoogleLogin(){
+    let url:string=''
+    this.auth.getGoogleAuthUrl().subscribe({
+      next:response=>{
+        url =response.data;
+        window.location.href=url;
+      }
+      })
 
+    }
 
 }

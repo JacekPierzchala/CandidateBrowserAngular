@@ -11,7 +11,7 @@ export class TextInputComponent implements ControlValueAccessor {
 @Input() label='';
 @Input() type='text';
 @Input() picture='text';
-@Input() eyeIcon='fa-eye-slash';
+@Input() eyeIcon='fa-eye';
 isText=false;
 
   constructor(@Self() public ngControl:NgControl) {

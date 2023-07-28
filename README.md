@@ -4,6 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 this application is client consuming API : https://candidatebrowsercleanarchapi.azurewebsites.net/api
 
+host address is :https://candidatebrowserangular.azurewebsites.net/
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
